@@ -1,0 +1,1889 @@
+{
+    "schema_version":  1,
+    "project":  "NRO",
+    "target_framework":  "net8.0-windows",
+    "entry_point":  "Program.cs",
+    "packages":  [
+                     "Newtonsoft.Json",
+                     "SkiaSharp"
+                 ],
+    "global_usings_file":  "GlobalUsings.cs",
+    "map_purpose":  "Per-file type declarations and layers for AI context, code search, and architecture diagrams. Regenerate after large refactors.",
+    "architecture":  {
+                         "description":  "Win32 host window + Skia back buffer; game loop calls Begin (MonoBehaviour) FixedUpdate/OnGUI; ported J2ME-style client mostly in global namespace under Source/.",
+                         "flow":  [
+                                      "Program.Main",
+                                      "Begin.Start/FixedUpdate/OnGUI",
+                                      "GameMidlet",
+                                      "GameCanvas",
+                                      "mScreen subclasses",
+                                      "Session_ME / Controller"
+                                  ]
+                     },
+    "namespace_conventions":  {
+                                  "NRO":  "Program, NativeMethods, Mod/*",
+                                  "(global)":  "Most other Source/*.cs — no namespace keyword",
+                                  "NRO.Core":  "MonoBehaviour interface",
+                                  "QLTK":  "AccountSetting",
+                                  "Assets.src.e|f|g":  "Source/Assets.src.* only"
+                              },
+    "files":  [
+                  {
+                      "path":  "AccountSetting.cs",
+                      "namespace":  "QLTK",
+                      "layer":  "root_host",
+                      "declarations":  [
+                                           "public class AccountSetting",
+                                           "public enum TypeHPMob",
+                                           "public enum TypeMob",
+                                           "public enum TypePickItem",
+                                           "internal partial class ClientJsonContext : JsonSerializerContext"
+                                       ]
+                  },
+                  {
+                      "path":  "Core/MonoBehaviour.cs",
+                      "namespace":  "NRO.Core",
+                      "layer":  "core_abstraction",
+                      "declarations":  [
+                                           "public interface MonoBehaviour"
+                                       ]
+                  },
+                  {
+                      "path":  "CpuMonitor.cs",
+                      "namespace":  null,
+                      "layer":  "root_host",
+                      "declarations":  [
+                                           "public class CpuMonitor"
+                                       ]
+                  },
+                  {
+                      "path":  "GlobalUsings.cs",
+                      "namespace":  null,
+                      "layer":  "root_host",
+                      "declarations":  [
+
+                                       ]
+                  },
+                  {
+                      "path":  "Graphics/Begin.cs",
+                      "namespace":  null,
+                      "layer":  "graphics_rendering",
+                      "declarations":  [
+                                           "public class Begin : MonoBehaviour"
+                                       ]
+                  },
+                  {
+                      "path":  "Graphics/mFont.cs",
+                      "namespace":  null,
+                      "layer":  "graphics_rendering",
+                      "declarations":  [
+                                           "public class mFont"
+                                       ]
+                  },
+                  {
+                      "path":  "Graphics/mGraphics.cs",
+                      "namespace":  null,
+                      "layer":  "graphics_rendering",
+                      "declarations":  [
+                                           "public class mGraphics"
+                                       ]
+                  },
+                  {
+                      "path":  "Graphics/Rms.cs",
+                      "namespace":  null,
+                      "layer":  "graphics_rendering",
+                      "declarations":  [
+                                           "public class Rms"
+                                       ]
+                  },
+                  {
+                      "path":  "Graphics/SKPaintExtensions.cs",
+                      "namespace":  null,
+                      "layer":  "graphics_rendering",
+                      "declarations":  [
+                                           "public static class SKPaintExtensions"
+                                       ]
+                  },
+                  {
+                      "path":  "LauncherConnection.cs",
+                      "namespace":  null,
+                      "layer":  "root_host",
+                      "declarations":  [
+                                           "public class LauncherConnection"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoChat.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoChat : IActionListener, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoItem.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoItem : IActionListener, IChatable",
+                                           "public class Item"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoMap.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoMap : IActionListener",
+                                           "public class NextMap",
+                                           "public class Type",
+                                           "public class MapData",
+                                           "public class CoordinateMap",
+                                           "public class UseItemMap",
+                                           "public class NpcMap",
+                                           "public class NpcAction",
+                                           "public class MenuMap",
+                                           "public class PointData",
+                                           "public class ItemAction { public int itemId { get; set; } }"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoNrsd.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoNrsd : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoPean.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoPean : IActionListener, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoPick.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoPick : IActionListener, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoPoint.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoPoint : IActionListener, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoSkill.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoSkill : IActionListener, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/AutoTrain.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class AutoTrain : IActionListener, IChatable",
+                                           "public class Node",
+                                           "public struct Coord",
+                                           "public struct PathPoint"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/Boss.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class Boss"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/HistoryManager.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class HistoryManager",
+                                           "internal partial class AppConfigJsonContext : JsonSerializerContext { }"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/Hotkeys.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class Hotkeys"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/LogoMod.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class LogoMod"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/MainMod.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class MainMod : IActionListener, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/MyAnimation.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class MyAnimation"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/Phacap.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class Phacap"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/ProxyClient.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class ProxyClient"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/TcpConnect.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class TcpConnect"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/TelexViet.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class TelexViet"
+                                       ]
+                  },
+                  {
+                      "path":  "Mod/XuLiSettings.cs",
+                      "namespace":  "NRO",
+                      "layer":  "mod_automation",
+                      "declarations":  [
+                                           "public class XuLiSettings"
+                                       ]
+                  },
+                  {
+                      "path":  "NativeMethods.cs",
+                      "namespace":  "NRO",
+                      "layer":  "root_host",
+                      "declarations":  [
+                                           "public static partial class NativeMethods",
+                                           "public struct WNDCLASSEX",
+                                           "public struct MSG",
+                                           "public struct BITMAPINFOHEADER",
+                                           "public struct BITMAPINFO",
+                                           "public struct RECT { public int Left, Top, Right, Bottom; }"
+                                       ]
+                  },
+                  {
+                      "path":  "Program.cs",
+                      "namespace":  "NRO",
+                      "layer":  "root_host",
+                      "declarations":  [
+                                           "public class NativeTimer",
+                                           "class Program"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ActionChat.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ActionPaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ActionUpdate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Archivement.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Archivement"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ArrayCast.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ArrayCast"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Arrow.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Arrow"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Arrowpaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Arrowpaint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.e/ChatVip.cs",
+                      "namespace":  "Assets.src.e",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "internal class ChatVip"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.e/Small.cs",
+                      "namespace":  "Assets.src.e",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "public class Small"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.e/SmallSave.cs",
+                      "namespace":  "Assets.src.e",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "internal class SmallSave"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.f/Controller2.cs",
+                      "namespace":  "Assets.src.f",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "internal class Controller2"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.g/BigBoss.cs",
+                      "namespace":  "Assets.src.g",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "public class BigBoss : Mob, IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.g/ClientInput.cs",
+                      "namespace":  "Assets.src.g",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "public class ClientInput : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.g/GameInfo.cs",
+                      "namespace":  "Assets.src.g",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "internal class GameInfo"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.g/ImageSource.cs",
+                      "namespace":  "Assets.src.g",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "internal class ImageSource"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.g/Mabu.cs",
+                      "namespace":  "Assets.src.g",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "internal class Mabu : Char"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.g/PetFollow.cs",
+                      "namespace":  "Assets.src.g",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "public class PetFollow"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Assets.src.g/RegisterScreen.cs",
+                      "namespace":  "Assets.src.g",
+                      "layer":  "game_assets_subpackage",
+                      "declarations":  [
+                                           "public class RegisterScreen : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/BachTuoc.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class BachTuoc : Mob, IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/BackgroudEffect.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class BackgroudEffect"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/BallInfo.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class BallInfo"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/BgItem.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class BgItem"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/BgItemMn.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class BgItemMn"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/BigBoss2.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class BigBoss2 : Mob, IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Char.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Char : IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ChatBox.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "internal class ChatBox"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ChatPopup.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ChatPopup : Effect2, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ChatTextField.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ChatTextField : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ChooseCharScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ChooseCharScr : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Clan.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Clan"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ClanImage.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ClanImage"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ClanManager.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ClanManager"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ClanMessage.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ClanMessage : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ClanObject.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ClanObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Cmd.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Cmd"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Command.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Command"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Controller.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Controller : IMessageHandler"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Cout.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Cout"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/CrackBallScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class CrackBallScr : mScreen"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/CreateCharScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class CreateCharScr : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/DartInfo.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class DartInfo"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/DataInputStream.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class DataInputStream"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/DataOutputStream.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class DataOutputStream"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Dialog.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public abstract class Dialog"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffecMn.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffecMn"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Effect.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Effect"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Effect_End.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Effect_End"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Effect2.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public abstract class Effect2"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectChar.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectChar"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectCharPaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectCharPaint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectData.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectData"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectFeet.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectFeet : Effect2"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectInfoPaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectInfoPaint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectManager.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectManager : MyVector"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectPaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectPaint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectPanel.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectPanel : Effect2"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EffectTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EffectTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/EPosition.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class EPosition"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Firework.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Firework"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/FireWorkEff.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class FireWorkEff"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/FireWorkMn.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class FireWorkMn"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Frame.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Frame"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/FrameImage.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class FrameImage"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Friend.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Friend"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/GameCanvas.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class GameCanvas : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/GameMidlet.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class GameMidlet"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/GamePad.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class GamePad"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/GameScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class GameScr : mScreen, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Hint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Hint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/HTTPHandler.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "internal interface HTTPHandler"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/IActionListener.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public interface IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/IChatable.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public interface IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/IKbAction.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public interface IKbAction"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Image.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Image : IDisposable"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ImageInfo.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ImageInfo"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/IMapObject.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public interface IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/IMessageHandler.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public interface IMessageHandler"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ImgByName.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ImgByName"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Info.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Info : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Info_RadaScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Info_RadaScr"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/InfoDlg.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class InfoDlg"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/InfoItem.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class InfoItem"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/InfoMe.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class InfoMe"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/InfoPhuBan.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class InfoPhuBan"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/InputDlg.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class InputDlg : Dialog"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/InputStream.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class InputStream : myReader"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/iOSPlugins.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class iOSPlugins"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/IPaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public abstract class IPaint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/iPhoneGeneration.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public enum iPhoneGeneration"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/iPhoneSettings.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class iPhoneSettings"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ipKeyboard.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ipKeyboard"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ISession.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public interface ISession"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Item.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Item"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ItemMap.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ItemMap : IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ItemObject.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ItemObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ItemOption.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ItemOption"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ItemOptionTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ItemOptionTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ItemTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ItemTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ItemTemplates.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ItemTemplates"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ItemTime.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ItemTime"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Key.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Key"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/KeyConstant.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class KeyConstant"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Layer.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Layer"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Line.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Line"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ListNew.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ListNew"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/LoginScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class LoginScr : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MagicTree.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MagicTree : Npc, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MainImage.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MainImage"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MapTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MapTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Math.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Math"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Member.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Member"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Menu.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Menu"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Message.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Message"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/mLine.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class mLine"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Mob.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Mob : IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MobCapcha.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MobCapcha"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MobTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MobTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MoneyCharge.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MoneyCharge : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MonsterDart.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MonsterDart : Effect2"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MotherCanvas.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MotherCanvas"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MovePoint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MovePoint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/mResources.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class mResources"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/mScreen.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class mScreen"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MsgDlg.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MsgDlg : Dialog"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/mSystem.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class mSystem"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MyAudioClip.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MyAudioClip"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MyHashTable.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MyHashTable"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MyKeyMap.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MyKeyMap"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MyRandom.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MyRandom"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/myReader.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class myReader"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MyStream.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MyStream"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/MyVector.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class MyVector"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/myWriter.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class myWriter"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/NClass.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class NClass"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Net.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "internal class Net"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/NewBoss.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class NewBoss : Mob, IMapObject"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/NewPanel.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "internal class NewPanel : IActionListener, IChatable"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/NinjaUtil.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class NinjaUtil"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Npc.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Npc : Char"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/NpcTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class NpcTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Paint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Paint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Panel.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Panel : IActionListener, IChatable",
+                                           "public class PlayerChat"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Part.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Part"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/PartImage.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class PartImage"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/PKFlag.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class PKFlag"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/PlayerDart.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class PlayerDart"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/PlayerData.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class PlayerData"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/PlayerInfo.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class PlayerInfo"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Point.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Point"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/PopUp.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class PopUp"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/PopUpYesNo.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class PopUpYesNo : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Position.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Position"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/RadarScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class RadarScr : mScreen"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Res.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Res"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ScaleGUI.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ScaleGUI"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Scroll.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Scroll"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ScrollResult.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ScrollResult"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SelectCharScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SelectCharScr : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ServerEffect.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ServerEffect : Effect2"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ServerListScreen.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ServerListScreen : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/ServerScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class ServerScr : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Service.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Service"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Session_ME.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Session_ME : ISession",
+                                           "public class Sender",
+                                           "private class MessageCollector"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Session_ME2.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Session_ME2 : ISession",
+                                           "public class Sender",
+                                           "private class MessageCollector"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Skill.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Skill"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SkillInfoPaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SkillInfoPaint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SkillOption.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SkillOption"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SkillOptionTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SkillOptionTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SkillPaint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SkillPaint"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Skills.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Skills"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SkillTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SkillTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SmallDart.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SmallDart"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SmallImage.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SmallImage"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SMS.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SMS"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Sound.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Sound"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SoundMn.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SoundMn",
+                                           "public class MediaPlayer",
+                                           "public class SoundPool",
+                                           "public class AssetManager"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/SplashScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class SplashScr : mScreen"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Sprite.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Sprite"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/StaticObj.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class StaticObj"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/T1.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class T1 : mResources"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/T2.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class T2 : mResources"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/T3.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class T3 : mResources"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TabClanIcon.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TabClanIcon : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/task.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class task"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TaskOrder.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TaskOrder"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TaskTemplate.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TaskTemplate"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Teleport.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Teleport"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TextInfo.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TextInfo"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TField.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TField : IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TileMap.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TileMap"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Timer.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Timer"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TopInfo.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TopInfo"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TouchScreenKeyboard.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TouchScreenKeyboard"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TouchScreenKeyboardType.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public enum TouchScreenKeyboardType"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/TransportScr.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class TransportScr : mScreen, IActionListener"
+                                       ]
+                  },
+                  {
+                      "path":  "Source/Waypoint.cs",
+                      "namespace":  null,
+                      "layer":  "game_client",
+                      "declarations":  [
+                                           "public class Waypoint : IActionListener"
+                                       ]
+                  }
+              ]
+}

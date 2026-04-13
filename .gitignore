@@ -1,0 +1,12 @@
+# .NET rác
+bin/
+obj/
+.vs/
+
+# Node rác
+node_modules/
+npm-debug.log
+
+# Thư mục build/temp
+dist/
+temp/
