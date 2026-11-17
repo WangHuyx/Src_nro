@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWindowsForms>false</UseWindowsForms>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<OutputPath>C:\Users\Asus\Desktop\Build_source_nro\NRO\NRO\NRO\bin\Debug\net8.0-windows\lib</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<OutDir>$(OutputPath)</OutDir>
+		<PublishAot>True</PublishAot>
+	</PropertyGroup>
+	<!-- Native AOT -->	
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<PublishAot>true</PublishAot>
+		<_AllowAllAssembliesToTrim>true</_AllowAllAssembliesToTrim>
+		<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+		<DebuggerSupport>false</DebuggerSupport>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="SkiaSharp" Version="2.88.9" />
+	</ItemGroup>
+
+</Project>
