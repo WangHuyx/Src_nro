@@ -11,15 +11,20 @@ public class Session_ME : ISession
 	public class Sender
 	{
 		public List<Message> sendingMessage;
-
-		public Sender()
+        private long DelaySend = 0L;
+		private readonly object _lock = new object();
+        public Sender()
 		{
 			sendingMessage = new List<Message>();
 		}
 
 		public void AddMessage(Message message)
 		{
-			sendingMessage.Add(message);
+			//lock (_lock)
+			//{
+				sendingMessage.Add(message);
+				//Monitor.Pulse(_lock); // Thông báo cho luồng gửi rằng có tin nhắn mới
+            //}
 		}
 
 		public void run()
@@ -28,8 +33,9 @@ public class Session_ME : ISession
 			{
 				try
 				{
-					if (getKeyComplete)
+					if (getKeyComplete && mSystem.currentTimeMillis() - DelaySend >= 1000)
 					{
+						DelaySend = mSystem.currentTimeMillis();
 						while (sendingMessage.Count > 0)
 						{
 							Message m = sendingMessage[0];
@@ -37,14 +43,7 @@ public class Session_ME : ISession
 							sendingMessage.RemoveAt(0);
 						}
 					}
-					try
-					{
-						Thread.Sleep(5);
-					}
-					catch (Exception ex)
-					{
-						Cout.LogError(ex.ToString());
-					}
+					Thread.Sleep(5);
 				}
 				catch (Exception)
 				{
@@ -52,6 +51,35 @@ public class Session_ME : ISession
 				}
 			}
 		}
+
+		//public void run()
+		//{
+		//	while (connected)
+		//	{
+		//		try
+		//		{
+		//			Message m = null;
+		//			lock (_lock)
+		//			{
+		//				// Nếu không có tin nhắn, luồng đứng im tại đây (0% CPU) [cite: 2026-04-09]
+		//				if (sendingMessage.Count == 0)
+		//				{
+		//					Monitor.Wait(_lock);
+		//				}
+		//				if (getKeyComplete)
+		//				{
+		//					while (sendingMessage.Count > 0)
+		//					{
+		//						m = sendingMessage[0];
+		//						doSendMessage(m);
+		//						sendingMessage.RemoveAt(0);
+		//					}
+		//				}
+		//			}
+		//		}
+		//		catch (Exception) { /* Log error */ }
+		//	}
+		//}
 	}
 
 	private class MessageCollector
@@ -84,7 +112,7 @@ public class Session_ME : ISession
 					}
 					try
 					{
-						Thread.Sleep(5);
+						Thread.Sleep(4);
 					}
 					catch (Exception ex2)
 					{
@@ -381,8 +409,8 @@ public class Session_ME : ISession
 
 	public void sendMessage(Message message)
 	{
-		count++;
-		Res.outz("SEND MSG: " + message.command);
+		//count++;
+		//Res.outz("SEND MSG: " + message.command);
 		sender.AddMessage(message);
 	}
 

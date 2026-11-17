@@ -996,43 +996,34 @@ public class AutoTrain : IActionListener, IChatable
 		{
 			return;
 		}
-		Skill skill = null;
-		int[] allowedIds = MainMod.CurrentSetting.ListSkill;
-        foreach (var s in GameScr.keySkill)
-		{
-			if (s == null || !allowedIds.Contains(s.template.id))
-				continue;
-			if (s.paintCanNotUseSkill)
-				continue;
-			if (Char.myCharz().skillInfoPaint() != null)
-				continue;
-			int manaCost = (s.template.manaUseType == 2)
-				? 1
-				: (s.template.manaUseType == 1
-				? (int)(s.manaUse * Char.myCharz().cMPFull / 100)
-				: s.manaUse);
-			if (Char.myCharz().cMP < manaCost)
-				continue;
+        Char me = Char.myCharz();
+        Skill skill = null;
+        int[] allowedIds = MainMod.CurrentSetting.ListSkill;
+        for (int i = 0; i < GameScr.keySkill.Length; i++)
+        {
+            Skill s = GameScr.keySkill[i];
+            if (s == null || !allowedIds.Contains(s.template.id))
+                continue;
+            if (s.paintCanNotUseSkill)
+                continue;
 
-			if (skill == null || skill.coolDown < s.coolDown)
-			{
-                if (s.template.id == 13)
-                {
-					if(Char.myCharz().isMonkey != 1) skill = s;
-                }
-				else 
-				{
-					skill = s; 
-                }
+            long manaCost = (s.template.manaUseType == 2)
+                ? 1L
+                : (s.template.manaUseType == 1
+                    ? (s.manaUse * me.cMPFull / 100L)
+                    : s.manaUse);
+            if (me.cMP < manaCost)
+                continue;
+
+            if (skill == null || skill.coolDown < s.coolDown)
+            {
+                if (s.template.id == 13 && (me.isMonkey == 1 || me.isWaitMonkey))
+                    continue;
+
+                skill = s;
             }
-			//if (skill != null)
-			//{
+        }
 
-			//	if (skill.template.id == 9 && Char.myCharz().cHP * 10 <= Char.myCharz().cHPFull)
-			//	{
-			//	}
-			//}
-		}
 		if (skill != null)
 		{
 			if ((skill.template.id >= 0 && skill.template.id <= 5) || skill.template.id == 7 || skill.template.id == 9 || skill.template.id == 17)
@@ -1043,28 +1034,28 @@ public class AutoTrain : IActionListener, IChatable
 				}
 			}
 			else GameScr.gI().doSelectSkill(skill, true);
-            bool canUseSkillAttack = (!ItemTime.isExistItem(4387) && (double)Math.abs(Char.myCharz().mobFocus.x - Char.myCharz().cx) < (double)skill.dx * 1.7) || ItemTime.isExistItem(4387);
-			if (skill.template.type >= 3 || skill.template.id == 10 || skill.template.id == 11 || skill.template.id == 14 || !canUseSkillAttack || skill.paintCanNotUseSkill)
+			if (skill.template.type >= 3 || skill.template.id == 10 || skill.template.id == 11 || skill.template.id == 14) return;
+        }
+		bool canUseSkillAttack = (!ItemTime.isExistItem(4387) && (double)Math.abs(Char.myCharz().mobFocus.x - Char.myCharz().cx) < (double)skill.dx * 1.7) || ItemTime.isExistItem(4387);
+		if(!canUseSkillAttack || Char.myCharz().myskill.paintCanNotUseSkill)
+		{
+			return;
+		}
+		if (mSystem.currentTimeMillis() - Char.myCharz().myskill.lastTimeUseThisSkill >= (long)(Char.myCharz().myskill.coolDown * AutoSkill.speedFactor))
+		{
+			if (skill.template.id == 7)
 			{
-				return;
+				skill.lastTimeUseThisSkill = mSystem.currentTimeMillis();
+				MyVector myVector = new MyVector();
+				myVector.addElement(Char.myCharz());
+				Service.gI().sendPlayerAttack(new MyVector(), myVector, 1);
 			}
-			if ((double)(mSystem.currentTimeMillis() - skill.lastTimeUseThisSkill) >= (double)((long)skill.coolDown) * AutoSkill.speedFactor)
+			else if (GameScr.gI().isMeCanAttackMob(Char.myCharz().mobFocus))
 			{
-				if (skill.template.id == 7)
-				{
-                    skill.lastTimeUseThisSkill = mSystem.currentTimeMillis();
-                    MyVector myVector = new MyVector();
-                    myVector.addElement(Char.myCharz());
-                    Service.gI().sendPlayerAttack(new MyVector(),myVector, 1);
-					return;
-                }
-				if (GameScr.gI().isMeCanAttackMob(Char.myCharz().mobFocus))
-				{
-					skill.lastTimeUseThisSkill = mSystem.currentTimeMillis();
-					MyVector myVector = new MyVector();
-					myVector.addElement(Char.myCharz().mobFocus);
-					Service.gI().sendPlayerAttack(myVector, new MyVector(), 1);
-				}
+				skill.lastTimeUseThisSkill = mSystem.currentTimeMillis();
+				MyVector myVector = new MyVector();
+				myVector.addElement(Char.myCharz().mobFocus);
+				Service.gI().sendPlayerAttack(myVector, new MyVector(), 1);
 			}
 		}
     }

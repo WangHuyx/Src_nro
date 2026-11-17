@@ -1,6 +1,7 @@
-using System;
 using Assets.src.g;
 using NRO;
+using System;
+using System.Globalization;
 
 public class GameScr : mScreen, IChatable
 {
@@ -6771,7 +6772,25 @@ public class GameScr : mScreen, IChatable
 	public void onChatFromMe(string text, string to)
 	{
 		Res.outz("CHAT");
-		if (!isPaintMessage || GameCanvas.isTouch)
+        if (text.StartsWith("attack_"))
+        {
+            double num;
+            if (double.TryParse(text.Substring("attack_".Length), NumberStyles.Any, CultureInfo.InvariantCulture, out num))
+            {
+                if (num <= 0.0)
+                {
+                    GameScr.info1.addInfo("Giá trị tốc độ phải lớn hơn 0\n", 0);
+                }
+                AutoSkill.speedFactor = System.Math.Min(num / 100.0, 1.0);
+                GameScr.info1.addInfo(string.Format("Set tốc độ: {0}\n", AutoSkill.speedFactor), 0);
+            }
+            else
+            {
+                GameScr.info1.addInfo("Sai định dạng. Vui lòng nhập số (VD: attack_85)\n", 0);
+            }
+			return;
+        }
+        if (!isPaintMessage || GameCanvas.isTouch)
 		{
 			ChatTextField.gI().isShow = false;
 		}

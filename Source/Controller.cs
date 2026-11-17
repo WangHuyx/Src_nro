@@ -320,7 +320,7 @@ public class Controller : IMessageHandler
 								mob3 = new Mob(num9, isDisable: false, isDontMove: false, isFire: false, isIce: false, isWind: false, templateId, 1, num10, 0, num10, -100, -100, 4, 0);
 								mob3.isMobMe = true;
 								GameScr.vMob.addElement(mob3);
-								GameScr.info1.addInfo($"thêm:{mob3.mobName}", 0);
+								//GameScr.info1.addInfo($"thêm:{mob3.mobName}", 0);
 							}
 						}
 					}

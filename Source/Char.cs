@@ -5118,7 +5118,7 @@ public class Char : IMapObject
 			{
 				return;
 			}
-			if (num - myskill.lastTimeUseThisSkill < (double)((long)this.myskill.coolDown) * AutoSkill.speedFactor)
+			if (num - myskill.lastTimeUseThisSkill < (long)(this.myskill.coolDown * AutoSkill.speedFactor))
 			{
 				myskill.paintCanNotUseSkill = true;
 				return;
@@ -5260,7 +5260,7 @@ public class Char : IMapObject
 			return;
 		}
 		long num = mSystem.currentTimeMillis();
-		if (me && num - myskill.lastTimeUseThisSkill < (double)((long)this.myskill.coolDown) * AutoSkill.speedFactor)
+		if (me && num - myskill.lastTimeUseThisSkill < (long)(this.myskill.coolDown * AutoSkill.speedFactor))
 		{
 			myskill.paintCanNotUseSkill = true;
 			return;

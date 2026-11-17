@@ -76,7 +76,7 @@ public class Skill
 	{
 		SmallImage.drawSmallImage(g, template.iconId, x, y, 0, StaticObj.VCENTER_HCENTER);
 		long num = mSystem.currentTimeMillis() - lastTimeUseThisSkill;
-        if (num >= (double)((long)this.coolDown) * AutoSkill.speedFactor)
+        if (num >= (long)(this.coolDown * AutoSkill.speedFactor))
         {
             this.paintCanNotUseSkill = false;
             return;

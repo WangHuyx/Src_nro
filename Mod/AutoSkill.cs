@@ -90,7 +90,7 @@ public class AutoSkill : IActionListener, IChatable
 
     public static long timeUseProtect;
 
-    public static double speedFactor=0.57;
+    public static double speedFactor=0.67;
 
     public static AutoSkill getInstance()
 	{
@@ -827,8 +827,6 @@ public class AutoSkill : IActionListener, IChatable
 			return;
 		}
 		int mySkillIndex = GetMySkillIndex();
-        
-
         if (mSystem.currentTimeMillis() - lastTimeSendAttack[mySkillIndex] >= GetCoolDown(Char.myCharz().myskill))
 		{
 			if (GameScr.gI().isMeCanAttackMob(Char.myCharz().mobFocus))
@@ -997,7 +995,7 @@ public class AutoSkill : IActionListener, IChatable
 		//{
 		//	return skill.coolDown + 100L;
 		//}
-		return (long)skill.coolDown /*+ 500L*/;
+		return (long)(skill.coolDown * speedFactor) /*+ 500L*/;
 	}
 
 	public static int GetMySkillIndex()
