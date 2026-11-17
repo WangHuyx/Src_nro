@@ -2657,9 +2657,9 @@ public class GameScr : mScreen, IChatable
 				cmdDead = new Command(mResources.DIES[0], 11038);
 				center = cmdDead;
 				Char.myCharz().cHP = 0L;
-			}
-			isHaveSelectSkill = false;
-		}
+                isHaveSelectSkill = false; //fix
+            }
+        }
 		else
 		{
 			isHaveSelectSkill = true;
